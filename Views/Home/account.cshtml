@@ -1,0 +1,24 @@
+
+<h2>Welcome @ViewBag.id @ViewBag.id2</h2>
+<p>Current Balance: @ViewBag.balance</p>
+<form asp-action="money" asp-controller="Home" method="post">
+    <p>Deposit/Withdraw
+        <input type="number" step="0.01" name="depowith">
+    </p>
+    <input value="Submit" type="Submit">
+        <table>
+            <tr>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+            @{
+                foreach (var item in @Model)
+                {
+                    <tr>
+                        <td>$@item.Decimal.ToString("0.00")</td>
+                        <td>$@item.CreatedAt.ToString("dd-MM-yyyy")</td>
+                    </tr>
+                }
+            }
+        </table>
+</form>
